@@ -52,9 +52,9 @@ def get_shop_list_by_dishes(dishes, person_count, coock_dict):
     for dish in dishes:
         for ingredient in coock_dict[dish]:
             if ingredient['ingredient_name'] in shop_list:
-                shop_list[ingredient['ingredient_name']]['quantity'] += ingredient['quantity']
+                shop_list[ingredient['ingredient_name']]['quantity'] += ingredient['quantity'] * person_count
             else:
-                shop_list[ingredient['ingredient_name']] = {'quantity': ingredient['quantity'], 'measure': ingredient['measure']}
+                shop_list[ingredient['ingredient_name']] = {'quantity': ingredient['quantity'] * person_count, 'measure': ingredient['measure']}
     return shop_list
 
 coock_dict = file_to_coockdict_readline('recipes.txt')
